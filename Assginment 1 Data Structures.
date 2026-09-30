@@ -1,52 +1,37 @@
-#inlcude <stdio.h>
+#include <stdio.h>
 
 #define MAX 6
 int box[MAX];
 int top = -1;
 
-void push(int x){
-  if(top == MAX -1){
-    printf(" Stack is full !! Cannot push %d\n" ,x);
-  }else{
-   top++;
-   box[top]=x;
-   printf("Value %d has been added \n", x);
-   }
-}
-
+// Traversal and display function
 void display() {
-  if (top == -1) {
-    printf("Stack is empty. \n");
-  return;
-}
-printf("Current stack: ");
-  for( int i=top; i>=0; i--){
-     printf("%d ", box[i]);
-}
-printf("\n");
+    // 1. Check if the stack has any elements to traverse
+    if (top == -1) {
+        printf("Stack is empty. Nothing to display.\n");
+        return;
+    }
+    
+    // 2. Traverse from the 'top' index down to '0' (LIFO order)
+    printf("Traversing stack (Top to Bottom): ");
+    for (int i = top; i >= 0; i--) {
+        printf("%d ", box[i]); // Display the current element
+    }
+    printf("\n");
 }
 
 int main() {
-printf("pushing elements \n");
-  push(1);
-    push(2);
-    push(3);
+    // Manually pre-filling the stack to demonstrate traversal
+    box[0] = 10;
+    box[1] = 20;
+    box[2] = 30;
+    box[3] = 40;
     
-    
+    // Set top to index 3 (4 elements total in the stack)
+    top = 3; 
+
+    // Execute the traversal and display
     display();
 
-    push(4);
-    push(5);
-    push(6);
-    push(7); // This will show the stack is full
-
-   display();
-
-   printf("\n Popping Elements \n");
-   pop();
-   pop();
-
-   display();
-
-   return 0;
+    return 0;
 }
